@@ -10,7 +10,7 @@ const getUser = async (name) => {
 const getAllUsers = async () => {
     let cursor = collection.find({});
     const results = await cursor.toArray();
-    return results;
+    return results; 
 }
 
 const saveUser = async (data) => {

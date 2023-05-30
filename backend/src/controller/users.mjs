@@ -3,21 +3,19 @@ import { getUser as getUserByName, saveUser, getAllUsers } from '../services/use
 
 
 const getUser = async (name) => {
-  const result = await getUserByName(req.params.name);
+  const result = await getUserByName(name);
   return result;
 }
 
 
 const getUsers = async () => {
   const results = await getAllUsers();
-  return result;
+  return results;
 }
 
 
 const createUser = async (body) => {
   const existingUser = await getUserByName(body.name);
-
-  console.log(existingUser);
 
   if(existingUser){
     return res.status(400).send('User already exists!');
@@ -31,8 +29,7 @@ const createUser = async (body) => {
   }
   
   const result = await saveUser(user);
-
-  res.status(200).json(result);
+  return result;
 }
 
 
