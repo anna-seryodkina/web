@@ -14,17 +14,15 @@ const extractToken = (req) => {
 }
 
 const authenticate = (req, res, next) => {
-    console.log('here');
-    next();
-    // const token = extractToken(req);
-    // console.log(token)
-    // try {
-    //     jwt.verify(token, config.JWT_SECRET);
-    //     next();
-    // } catch (e) {
-    //     console.log(e)
-    //     res.status(401).send('Not authorised!');
-    // }
+    const token = extractToken(req);
+    console.log(token)
+    try {
+        jwt.verify(token, config.JWT_SECRET);
+        next();
+    } catch (e) {
+        console.log(e)
+        res.status(401).send('Not authorised!');
+    }
 }
 
 export {
